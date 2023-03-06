@@ -2,7 +2,7 @@
 import * as marked from "https://esm.sh/marked@4.2.12";
 import { Hono } from "https://esm.sh/hono@3.0.3";
 import { jsx } from "https://esm.sh/hono@3.0.3/jsx";
-import { extract } from "https://deno.land/std@0.178.0/encoding/front_matter/any.ts";
+import { extract, test } from "https://deno.land/std@0.178.0/encoding/front_matter/any.ts";
 import { serve } from "https://deno.land/std@0.178.0/http/server.ts";
 
 const hono = new Hono();
@@ -11,7 +11,7 @@ hono.get("/*", async (ctx) => {
   const url = new URL(ctx.req.url);
   const res = await fetch(`https://${url.pathname}`);
   const body = await res.text();
-  const html = marked.parse(extract(body).body);
+  const html = marked.parse(test(body) ? extract(body).body : body);
   const title = html.replace(/[\s\S]*<h1[\s\S]*?>([\s\S]*?)<\/h1>[\s\S]*/, "$1");
   return ctx.html(
     <html>
