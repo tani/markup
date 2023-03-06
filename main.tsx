@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import * as marked from "npm:marked@4.2.12";
-import { Hono } from "npm:hono@3.0.3";
-import { jsx } from "npm:hono@3.0.3/jsx";
+import * as marked from "https://esm.sh/marked@4.2.12";
+import { Hono } from "https://esm.sh/hono@3.0.3";
+import { jsx } from "https://esm.sh/hono@3.0.3/jsx";
 import { extract } from "https://deno.land/std@0.178.0/encoding/front_matter/any.ts";
 import { serve } from "https://deno.land/std@0.178.0/http/server.ts";
 
